@@ -19,7 +19,7 @@ export class AppComponent {
 }
 
 interface Contacts {
-  Id: bigint;
-  FirstName: string;
-  LastName: string;
+  id: bigint;
+  firstName: string;
+  lastName: string;
 }
