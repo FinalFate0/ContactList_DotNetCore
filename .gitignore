@@ -476,5 +476,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Database binary files
+# SQLite Database files
 *.db
+*.db-shm
+*.db-wal
