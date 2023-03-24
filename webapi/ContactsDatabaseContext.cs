@@ -36,11 +36,23 @@ namespace webapi
                     FirstName = "John",
                     LastName = "Smith",
                     Email = "johnsmith@email.xyz",
-                    Password = "password",
+                    Password = "password1",
                     CategoryId = 1,
                     PhoneNumber = "111222333",
                     DateOfBirth = new DateOnly(1989, 1, 1)
-                });
+                }, new Contact()
+                {
+                    Id = 2,
+                    FirstName = "Shell",
+                    LastName = "Kim",
+                    Email = "shellkim@email.xyz",
+                    Password = "password2",
+                    CategoryId = 2,
+                    SubcategoryId = 1,
+                    PhoneNumber = "123456789",
+                    DateOfBirth = new DateOnly(1991, 8, 10)
+                }
+                );
         }
     }
 }
