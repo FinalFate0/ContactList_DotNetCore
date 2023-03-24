@@ -32,7 +32,7 @@ namespace webapi.Controllers
                 .Include(c => c.Category)
                 .Include(c => c.Subcategory).ToListAsync();
 
-            return await _context.Contacts.ToListAsync();
+            return contact;
         }
 
         // GET: api/Contacts/5
