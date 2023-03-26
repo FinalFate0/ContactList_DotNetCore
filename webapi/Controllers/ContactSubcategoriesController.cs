@@ -28,7 +28,8 @@ namespace webapi.Controllers
           {
               return NotFound();
           }
-            return await _context.Subcategories.ToListAsync();
+            return await _context.Subcategories
+                .Include(c => c.Category).ToListAsync();
         }
 
         // GET: api/ContactSubcategories/5
@@ -39,7 +40,27 @@ namespace webapi.Controllers
           {
               return NotFound();
           }
-            var contactSubcategory = await _context.Subcategories.FindAsync(id);
+            var contactSubcategory = await _context.Subcategories
+                .Include(c => c.Category).FirstOrDefaultAsync(i => i.Id == id);
+
+            if (contactSubcategory == null)
+            {
+                return NotFound();
+            }
+
+            return contactSubcategory;
+        }
+
+        // GET: api/ContactSubcategories/name/CEO
+        [HttpGet("name/{name}")]
+        public async Task<ActionResult<ContactSubcategory>> GetContactSubcategoryByName(string name)
+        {
+            if (_context.Subcategories == null)
+            {
+                return NotFound();
+            }
+            var contactSubcategory = await _context.Subcategories
+                .Include(c => c.Category).FirstOrDefaultAsync(n => n.Name == name);
 
             if (contactSubcategory == null)
             {

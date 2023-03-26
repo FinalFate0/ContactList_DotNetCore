@@ -49,6 +49,24 @@ namespace webapi.Controllers
             return contactCategory;
         }
 
+        // GET: api/ContactCategories/name/Business
+        [HttpGet("name/{name}")]
+        public async Task<ActionResult<ContactCategory>> GetContactCategoryByName(string name)
+        {
+            if (_context.Categories == null)
+            {
+                return NotFound();
+            }
+            var contactCategory = await _context.Categories.FirstOrDefaultAsync(n => n.Name == name);
+
+            if (contactCategory == null)
+            {
+                return NotFound();
+            }
+
+            return contactCategory;
+        }
+
         // PUT: api/ContactCategories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

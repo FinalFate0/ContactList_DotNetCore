@@ -29,6 +29,10 @@ namespace webapi
                 new ContactSubcategory() { Id = 2, Name = "Client" }
                 );
 
+            modelBuilder.Entity<Contact>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
             modelBuilder.Entity<Contact>().HasData(
                 new Contact()
                 {

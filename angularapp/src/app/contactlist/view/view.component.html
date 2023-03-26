@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Contact Details</h1>
+
+  <a href="#" routerLink="/contactlist/index" class="btn btn-primary">Back</a>
+
+  <div>
+    <strong>ID:</strong>
+    <p>{{ contact.id }}</p>
+  </div>
+  <div>
+    <strong>First Name:</strong>
+    <p>{{ contact.firstName }}</p>
+  </div>
+  <div>
+    <strong>Last Name:</strong>
+    <p>{{ contact.lastName }}</p>
+  </div>
+  <div>
+    <strong>Date of Birth:</strong>
+    <p>{{ contact.dateOfBirth }}</p>
+  </div>
+  <div>
+    <strong>Phone Number:</strong>
+    <p>{{ contact.phoneNumber }}</p>
+  </div>
+  <div>
+    <strong>Email:</strong>
+    <p>{{ contact.email }}</p>
+  </div>
+  <div>
+    <strong>Password:</strong>
+    <p>{{ contact.password }}</p>
+  </div>
+  <div>
+    <strong>Category:</strong>
+    <p>{{ contact.category['name'] }}</p>
+  </div>
+  <div>
+    <strong>Subcategory:</strong>
+    <p *ngIf="contact.subcategory; else NoSubcategory">{{ contact.subcategory['name'] }}</p>
+  </div>
+
+</div>
+
+<ng-template #NoSubcategory>
+  <br />None
+</ng-template>

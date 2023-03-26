@@ -30,7 +30,7 @@ namespace webapi.Controllers
           }
             var contact = await _context.Contacts
                 .Include(c => c.Category)
-                .Include(c => c.Subcategory).ToListAsync();
+                .Include(s => s.Subcategory).ToListAsync();
 
             return contact;
         }
@@ -43,7 +43,9 @@ namespace webapi.Controllers
           {
               return NotFound();
           }
-            var contact = await _context.Contacts.FindAsync(id);
+            var contact = await _context.Contacts
+                .Include(c => c.Category)
+                .Include(s => s.Subcategory).FirstOrDefaultAsync(i => i.Id == id);
 
             if (contact == null)
             {
