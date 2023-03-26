@@ -28,9 +28,7 @@ namespace webapi.Controllers
           {
               return NotFound();
           }
-            var contact = await _context.Contacts
-                .Include(c => c.Category)
-                .Include(c => c.Subcategory).ToListAsync();
+            var contact = await _context.Contacts.ToListAsync();
 
             return contact;
         }

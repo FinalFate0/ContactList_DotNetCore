@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Contact List</h1>
+
+  <a href="#" routerLink="/contactlist/add/" class="btn btn-success">Add Contact</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th width="250px">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts">
+        <td>{{ contact.id }}</td>
+        <td>{{ contact.firstName }}</td>
+        <td>{{ contact.lastName }}</td>
+        <td>
+          <a href="#" [routerLink]="['/contactlist/', contact.id, 'view']" class="btn btn-info">View</a>
+          <a href="#" [routerLink]="['/contactlist/', contact.id, 'edit']" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deleteContact(contact.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
