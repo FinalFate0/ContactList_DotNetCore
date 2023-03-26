@@ -43,7 +43,7 @@ Database: `SQLite`
 	dotnet watch run
 	```
 
-5. Open second terminal window/tab
+5. Open a second terminal window/tab
 6. Navigate to the `angularapp` folder from project root
 7. Run the commands:  
 
