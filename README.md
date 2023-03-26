@@ -28,7 +28,7 @@ Database: `SQLite`
   - `Migrations` - Folder for the generated Migrations from the database context
   - `Models`
     - `Contact.cs` - Database model of the Contact table
-  - `ContactsDatabaseContext.cs` - Database structure description, database seeding
+  - `ContactsDatabaseContext.cs` - Database structure description for database generation
   
 ## Building the application (Windows)
 
