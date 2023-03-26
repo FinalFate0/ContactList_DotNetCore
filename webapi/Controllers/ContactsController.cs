@@ -13,6 +13,8 @@ namespace webapi.Controllers
     [ApiController]
     public class ContactsController : ControllerBase
     {
+        // Handles all database queries
+
         private readonly ContactsDatabaseContext _context;
 
         public ContactsController(ContactsDatabaseContext context)

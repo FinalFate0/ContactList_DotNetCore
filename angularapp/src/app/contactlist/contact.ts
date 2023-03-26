@@ -1,4 +1,5 @@
 export interface Contact {
+  //Representation of Contact entity from the database
   id: number;
   firstName: string;
   lastName: string;

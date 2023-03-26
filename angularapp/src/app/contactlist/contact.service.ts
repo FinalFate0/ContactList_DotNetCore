@@ -10,7 +10,7 @@ import { Contact } from "./contact";
   providedIn: 'root'
 })
 export class ContactService {
-
+  //Handles sending API calls through the HTTP Client
   private apiURL = "/api";
 
   //Http Header Options
@@ -68,7 +68,7 @@ export class ContactService {
       )
   }
 
-
+  //Simple error handler for basic debbuging
   errorHandler(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

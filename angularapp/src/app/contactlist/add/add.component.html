@@ -1,51 +1,65 @@
 <div class="container">
   <h1>Add Contact</h1>
-
+  <!--Form for adding a new contact to the contact list-->
   <a href="#" routerLink="/contactlist/index" class="btn btn-primary">Back</a>
 
+  <!--sets the form to created form group and triggers the submit() function after submitting-->
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-group">
       <label for="firstName">First Name:</label>
       <input formControlName="firstName" id="first-name" type="text" class="form-control">
-      <div *ngIf="f['firstName'].touched && f['firstName'].invalid" class="alert alert-danger">First name is invalid.
+      <!--checks if the field is invalid and has been interacted before by the user
+          and shows an error message-->
+      <div *ngIf="f['firstName'].touched && f['firstName'].invalid" class="alert alert-danger">
+        First name is invalid.
+        <!--checks if the field is empty and shows an error message-->
         <div *ngIf="f['firstName'].errors && f['firstName'].errors['required']">First name is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="lastName">Last Name:</label>
       <input formControlName="lastName" id="last-name" type="text" class="form-control">
-      <div *ngIf="f['lastName'].touched && f['lastName'].invalid" class="alert alert-danger">Last name is invalid.
+      <div *ngIf="f['lastName'].touched && f['lastName'].invalid" class="alert alert-danger">
+        Last name is invalid.
         <div *ngIf="f['lastName'].errors && f['lastName'].errors['required']">Last name is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="dateOfBirth">Date of Birth:</label>
       <input formControlName="dateOfBirth" id="date-of-birth" type="date" class="form-control">
-      <div *ngIf="f['dateOfBirth'].touched && f['dateOfBirth'].invalid" class="alert alert-danger">Date of birth is invalid.
+      <div *ngIf="f['dateOfBirth'].touched && f['dateOfBirth'].invalid" class="alert alert-danger">
+        Date of birth is invalid.
         <div *ngIf="f['dateOfBirth'].errors && f['dateOfBirth'].errors['required']">Date of birth is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="phoneNumber">Phone Number:</label>
+      <!--only allows numbers 0-9-->
       <input formControlName="phoneNumber" id="phone-number" type="number" pattern="[0-9]*" class="form-control">
-      <div *ngIf="f['phoneNumber'].touched && f['phoneNumber'].invalid" class="alert alert-danger">Phone number is invalid.
+      <div *ngIf="f['phoneNumber'].touched && f['phoneNumber'].invalid" class="alert alert-danger">
+        Phone number is invalid.
         <div *ngIf="f['phoneNumber'].errors && f['phoneNumber'].errors['required']">Phone number is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
+      <!--email field is restricted to standard email format-->
       <input formControlName="email" id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control">
-      <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">Email is invalid.
+      <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+        Email is invalid.
         <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
+      <!--password field checks for basic security requirements (at least 8 characters, 1 number and 1 letter)-->
       <input formControlName="password" id="password" type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" class="form-control">
-      <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">Password requirements unfulfilled:<br />- needs to have at least 8 characters<br />- needs to include at least one letter and one number
+      <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+        Password requirements unfulfilled:<br />- needs to have at least 8 characters<br />- needs to include at least one letter and one number
         <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
       </div>
     </div>
+    <!--button is disabled if any field in the form is invalid-->
     <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
   </form>
 </div>

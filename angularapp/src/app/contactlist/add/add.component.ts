@@ -15,6 +15,8 @@ export class AddComponent implements OnInit {
   constructor(public contactService: ContactService, private router: Router) { }
 
   ngOnInit(): void {
+    //initializes the form containing every contact attribute
+    //'Validators.required' checks that the fields aren't empty
     this.form = new FormGroup({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
@@ -25,16 +27,23 @@ export class AddComponent implements OnInit {
     });
   }
 
+  //allows easier access to current form control field values
   get f() {
     return this.form.controls;
   }
 
 
   submit() {
+    //Adds a new contact with values from the form using the contact service
+
+    //retrieves all values from the form
     var formValues = this.form.value;
-    formValues['phoneNumber'] = String(formValues['phoneNumber'])
+
+    //casts the phone number to a string, as required by the database model
+    formValues['phoneNumber'] = String(formValues['phoneNumber']);
     console.log(formValues);
 
+    //updates the contact
     this.contactService.add(this.form.value).subscribe((result: any) => {
       console.log('New contact has been added');
       this.router.navigateByUrl('contactlist/index');

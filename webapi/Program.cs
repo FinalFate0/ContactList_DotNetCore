@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-// Adds the Contacts Database Context, so the application can use it
+// Adds the created database context to the project
 builder.Services.AddDbContext<ContactsDatabaseContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -6,18 +6,23 @@ namespace webapi
 {
     public class ContactsDatabaseContext : DbContext
     {
+        //Contains the description for code-first new database generation
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //Configures type and location of the database
             optionsBuilder.UseSqlite(@"Data Source=Contacts.db;");
         }
+        
+        //Adds the Contacts table to the database
         public DbSet<Contact> Contacts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            //Specifies that the Contact.Email field is unique
             modelBuilder.Entity<Contact>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
 
+            //Seeds the database with example contacts
             modelBuilder.Entity<Contact>().HasData(
                 new Contact()
                 {
